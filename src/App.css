@@ -1,0 +1,337 @@
+:root {
+  --normalColor: linear-gradient(
+    90deg,
+    rgba(108, 76, 26, 1) 0%,
+    rgb(161, 124, 68) 100%
+  );
+  --fightingColor: linear-gradient(
+    90deg,
+    rgb(189, 57, 39) 0%,
+    rgb(231, 84, 84) 100%
+  );
+
+  --flyingColor: linear-gradient(
+    90deg,
+    rgba(91, 134, 229, 1) 0%,
+    rgba(54, 209, 220, 1) 100%
+  );
+  --poisonColor: linear-gradient(
+    90deg,
+    rgb(91, 3, 206) 0%,
+    rgb(133, 82, 226) 100%
+  );
+  --groundColor: linear-gradient(
+    90deg,
+    rgb(126, 103, 0) 0%,
+    rgb(185, 148, 44) 100%
+  );
+  --rockColor: linear-gradient(
+    90deg,
+    rgb(70, 65, 52) 0%,
+    rgb(98, 95, 105) 100%
+  );
+  --bugColor: linear-gradient(
+    90deg,
+    rgb(139, 175, 7) 0%,
+    rgb(195, 230, 69) 100%
+  );
+  --ghostColor: linear-gradient(
+    90deg,
+    rgb(54, 0, 126) 0%,
+    rgb(102, 40, 218) 100%
+  );
+  --steelColor: linear-gradient(
+    90deg,
+    rgb(124, 122, 117) 0%,
+    rgb(204, 203, 206) 100%
+  );
+  --fireColor: linear-gradient(
+    90deg,
+    rgba(255, 95, 109, 1) 0%,
+    rgba(255, 195, 113, 1) 100%
+  );
+  --waterColor: linear-gradient(
+    90deg,
+    rgb(12, 62, 163) 0%,
+    rgba(54, 209, 220, 1) 100%
+  );
+  --grassColor: linear-gradient(
+    90deg,
+    rgb(2, 176, 124) 0%,
+    rgba(0, 205, 172, 1) 100%
+  );
+  --electricColor: linear-gradient(
+    90deg,
+    rgb(192, 173, 0) 0%,
+    rgb(248, 234, 105) 100%
+  );
+  --psychicColor: linear-gradient(
+    90deg,
+    rgb(114, 62, 110) 0%,
+    rgb(214, 132, 203) 100%
+  );
+  --iceColor: linear-gradient(
+    90deg,
+    rgb(3, 188, 212) 0%,
+    rgb(145, 245, 252) 100%
+  );
+  --dragonColor: linear-gradient(
+    90deg,
+    rgb(216, 97, 0) 0%,
+    rgb(252, 136, 70) 100%
+  );
+  --darkColor: linear-gradient(90deg, rgb(87, 35, 0) 0%, rgb(136, 89, 61) 100%);
+  --fairyColor: linear-gradient(
+    90deg,
+    rgb(228, 57, 213) 0%,
+    rgb(237, 132, 247) 100%
+  );
+}
+
+.App {
+  text-align: center;
+}
+
+.display-message {
+  color: White;
+  text-shadow: 2px 2px 1px black;
+
+  font-weight: 600;
+  font-size: x-large;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+  transition: all 4s ease-in;
+  min-width: 300px;
+  min-height: 500px;
+}
+
+.bg-image {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(36, 36, 36, 0.5)),
+    url("assets/pokemon_bg_1.jpg");
+  background-size: cover;
+  filter: blur(5px);
+}
+
+.top-half {
+  height: 50vh;
+  transition: all 0.8s ease-in;
+}
+
+.top-half.open {
+  transform: translateY(-80vh);
+}
+
+.red {
+  height: 50vh;
+  width: 100vw;
+  background-color: #ff4b41;
+}
+
+.bottom-half {
+  height: 50vh;
+  width: 100vw;
+  background-color: white;
+  transition: all 0.8s ease-in;
+}
+
+.bottom-half.open {
+  transform: translateY(80vh);
+}
+
+.circle-line {
+  position: absolute;
+  transform: translateX(50vw);
+  transition: all 1s ease-in;
+}
+
+.line {
+  background-color: black;
+  height: 30px;
+  width: 100vw;
+
+  position: absolute;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  transition: all 1s ease-in;
+}
+
+.outermost-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  background-color: black;
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  transition: all 1s ease-in;
+}
+
+.intermediate-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+}
+
+.innermost-circle,
+.start-button {
+  background-color: white;
+  font-size: x-large;
+  font-weight: 800;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  transition: all;
+}
+
+.start-button:hover {
+  cursor: pointer;
+}
+
+.card {
+  border: 1.5px solid black;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: x-large;
+  font-weight: 800;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  background: linear-gradient(90deg, rgb(192, 192, 192), rgb(248, 248, 248));
+  height: 50%;
+  width: 20%;
+  border-radius: 4%;
+  position: absolute;
+  top: 35%;
+  min-width: 220px;
+}
+
+form {
+  position: absolute;
+  top: 5%;
+}
+
+input {
+  display: none;
+  opacity: 0;
+  width: 350px;
+  min-width: 300px;
+  height: 50px;
+  background-color: white;
+  box-sizing: border-box;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  transition: all 2s ease-in;
+  position: relative;
+  top: 0%;
+}
+
+input.open {
+  opacity: 1;
+  display: block;
+}
+
+.name {
+  font-size: 40px;
+}
+
+.normal {
+  background: var(--normalColor);
+}
+
+.fire {
+  background: var(--fireColor);
+}
+
+.water {
+  background: var(--waterColor);
+}
+
+.grass {
+  background: var(--grassColor);
+}
+
+.fighting {
+  background: var(--fightingColor);
+}
+
+.flying {
+  background: var(--flyingColor);
+}
+.poison {
+  background: var(--poisonColor);
+}
+
+.ground {
+  background: var(--groundColor);
+}
+.rock {
+  background: var(--rockColor);
+}
+.bug {
+  background: var(--bugColor);
+}
+.ghost {
+  background: var(--ghostColor);
+}
+.steel {
+  background: var(--steelColor);
+}
+.electric {
+  background: var(--electricColor);
+}
+.psychic {
+  background: var(--psychicColor);
+}
+.ice {
+  background: var(--iceColor);
+}
+.dragon {
+  background: var(--dragonColor);
+}
+.dark {
+  background: var(--darkColor);
+}
+.fairy {
+  background: var(--fairyColor);
+}
+
+.image-container {
+  position: relative;
+  height: 50%;
+  width: 100%;
+}
+
+.image-container img {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.not-found-message {
+  color: whitesmoke;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+  position: absolute;
+  top: 20%;
+}
