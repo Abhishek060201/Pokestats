@@ -92,40 +92,36 @@
   text-align: center;
 }
 
-.display-message {
-  color: White;
-  text-shadow: 2px 2px 1px black;
-
-  font-weight: 600;
-  font-size: x-large;
-}
-
 .container {
   display: flex;
   flex-flow: column;
   align-items: center;
 
-  position: relative;
-  overflow: hidden;
-  transition: all 4s ease-in;
+  position: absolute;
+
   min-width: 300px;
   min-height: 500px;
+  z-index: 2;
+}
+
+.hide {
+  display: none;
 }
 
 .bg-image {
   height: 100vh;
+  min-height: 100%;
   width: 100vw;
   position: absolute;
   z-index: -1;
-  background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(36, 36, 36, 0.5)),
-    url("assets/pokemon_bg_1.jpg");
+  background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(36, 36, 36, 0.5)), url("assets/pokemon_bg_1.jpg");
   background-size: cover;
   filter: blur(5px);
 }
 
 .top-half {
   height: 50vh;
-  transition: all 0.8s ease-in;
+  transition: transform 0.8s ease-in;
 }
 
 .top-half.open {
@@ -142,7 +138,7 @@
   height: 50vh;
   width: 100vw;
   background-color: white;
-  transition: all 0.8s ease-in;
+  transition: transform 0.8s ease-in;
 }
 
 .bottom-half.open {
@@ -150,9 +146,7 @@
 }
 
 .circle-line {
-  position: absolute;
-  transform: translateX(50vw);
-  transition: all 1s ease-in;
+  position: relative;
 }
 
 .line {
@@ -160,38 +154,9 @@
   height: 30px;
   width: 100vw;
 
-  position: absolute;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-  transition: all 1s ease-in;
+  transform: translateY(-50%);
 }
 
-.outermost-circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  background-color: black;
-  height: 160px;
-  width: 160px;
-  border-radius: 50%;
-  transition: all 1s ease-in;
-}
-
-.intermediate-circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  height: 130px;
-  width: 130px;
-  border-radius: 50%;
-}
-
-.innermost-circle,
 .start-button {
   background-color: white;
   font-size: x-large;
@@ -199,58 +164,77 @@
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  transition: all;
+  z-index: 200;
+  box-shadow: 0 0 0 2px black,
+  0 0 0 15px white,
+  0 0 0 30px black;
+
+  transform: translateY(-82%);
 }
 
 .start-button:hover {
   cursor: pointer;
 }
 
-.card {
-  border: 1.5px solid black;
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: x-large;
-  font-weight: 800;
-  -webkit-text-stroke-width: 0.3px;
-  -webkit-text-stroke-color: black;
-  background: linear-gradient(90deg, rgb(192, 192, 192), rgb(248, 248, 248));
-  height: 50%;
-  width: 20%;
-  border-radius: 4%;
-  position: absolute;
-  top: 35%;
-  min-width: 220px;
+.main {
+  position: relative;
 }
 
 form {
-  position: absolute;
-  top: 5%;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 input {
-  display: none;
-  opacity: 0;
   width: 350px;
-  min-width: 300px;
   height: 50px;
   background-color: white;
   box-sizing: border-box;
   font-size: 2rem;
   padding: 1rem;
   margin: 2rem auto;
-  transition: all 2s ease-in;
-  position: relative;
-  top: 0%;
-}
-
-input.open {
-  opacity: 1;
-  display: block;
 }
 
 .name {
   font-size: 40px;
+}
+
+.card {
+  margin: auto;
+  padding: 0 5px;
+  width: fit-content;
+  height: fit-content;
+  min-width: 220px;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: x-large;
+  font-weight: 800;
+
+  border: 1.5px solid black;
+  border-radius: 4%;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+}
+
+.image-container {
+  position: relative;
+  top: -40px;
+  height: 50%;
+  width: 100%;
+}
+
+.card-details {
+  position: relative;
+  top: -40px;
+}
+
+.not-found-message {
+  color: whitesmoke;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+  position: relative;
+  top: -100px;
 }
 
 .normal {
@@ -312,26 +296,4 @@ input.open {
 }
 .fairy {
   background: var(--fairyColor);
-}
-
-.image-container {
-  position: relative;
-  height: 50%;
-  width: 100%;
-}
-
-.image-container img {
-  position: absolute;
-  top: -30%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.not-found-message {
-  color: whitesmoke;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 50px;
-  font-weight: 800;
-  position: absolute;
-  top: 20%;
 }
